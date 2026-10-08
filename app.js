@@ -30,13 +30,22 @@
     } catch (e) { /* storage unavailable */ }
   }
 
+  function dinnerOptions() {
+    const seen = {};
+    Object.values(plan.dinners || {}).forEach(d => { if (!seen[d.name]) seen[d.name] = d; });
+    return Object.values(seen);
+  }
+  function dinnerFor(dayIdx) {
+    if (state.dinner === "none") return null;
+    const swapped = dinnerOptions().find(d => d.name === state.dinner);
+    return swapped || (plan.dinners && plan.dinners[DAYS[dayIdx].toLowerCase()]) || null;
+  }
   function mealsFor(dayIdx) {
     const meals = MEALS.map(([label, key]) => [label, plan[key] || []]).filter(m => m[1].length);
-    const dinner = plan.dinners && plan.dinners[DAYS[dayIdx].toLowerCase()];
+    const dinner = dinnerFor(dayIdx);
     if (dinner) meals.push([dinner.name, dinner.items]);
     return meals;
   }
-  const hasDinner = dayIdx => Boolean(plan.dinners && plan.dinners[DAYS[dayIdx].toLowerCase()]);
   const keyFor = (label, item) => label.toLowerCase().replace(/\s+/g, "-") + ":" + item.id;
   const focus = () => plan.calGoal ? "cal" : "pro";
   const goalFor = (m, planned) => (m === "cal" ? plan.calGoal : plan.proGoal) || planned;
@@ -121,12 +130,36 @@
     });
   }
 
+  function dinnerPicker(selected) {
+    const label = document.createElement("label");
+    label.className = "pick";
+    const select = document.createElement("select");
+    select.setAttribute("aria-label", "Swap dinner");
+    dinnerOptions().concat([{ name: "" }]).forEach(d => {
+      const opt = document.createElement("option");
+      opt.value = d.name;
+      opt.textContent = d.name || "Your pick";
+      opt.selected = d.name === selected;
+      select.appendChild(opt);
+    });
+    select.addEventListener("change", () => {
+      const planned = plan.dinners && plan.dinners[DAYS[current].toLowerCase()];
+      const plannedName = planned ? planned.name : "";
+      if (select.value === plannedName) delete state.dinner;
+      else state.dinner = select.value || "none";
+      save(); render();
+    });
+    label.appendChild(select);
+    return label;
+  }
+
   function render() {
     renderDays();
     $("title").textContent = current === todayIdx ? "Today" : DAYS[current];
     $("switch").textContent = plan.name || PEOPLE[person];
 
     const meals = mealsFor(current);
+    const dinner = dinnerFor(current);
     const wrap = $("meals");
     wrap.innerHTML = "";
 
@@ -135,7 +168,8 @@
       const head = document.createElement("div");
       head.className = "meal-head";
       head.innerHTML = "<h2></h2><span></span>";
-      head.querySelector("h2").textContent = label;
+      if (dinner && label === dinner.name) head.querySelector("h2").appendChild(dinnerPicker(dinner.name));
+      else head.querySelector("h2").textContent = label;
       head.querySelector("span").textContent = fmt(sum(items, "cal")) + " cal · " + fmt1(sum(items, "pro")) + "g";
       const ul = document.createElement("ul");
       items.forEach(it => {
@@ -146,13 +180,14 @@
       wrap.appendChild(sec);
     });
 
-    if (!hasDinner(current)) {
+    if (!dinner) {
       const m = focus();
       const all = meals.flatMap(x => x[1]);
       const left = Math.max(0, goalFor(m, 0) - sum(all, m));
       const sec = document.createElement("section");
-      sec.innerHTML = '<div class="meal-head"><h2>Dinner</h2><span>your pick</span></div><div class="budget">About <strong>' +
+      sec.innerHTML = '<div class="meal-head"><h2></h2><span>dinner</span></div><div class="budget">About <strong>' +
         num(m, left) + unit(m) + '</strong> left for dinner. Add it under Extras once you know what it is.</div>';
+      sec.querySelector("h2").appendChild(dinnerPicker(""));
       wrap.appendChild(sec);
     }
 

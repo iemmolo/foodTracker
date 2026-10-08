@@ -1,4 +1,4 @@
-const CACHE = "food-v1";
+const CACHE = "food-v2";
 const APP_FILES = [
   "./",
   "index.html",

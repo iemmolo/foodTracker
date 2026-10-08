@@ -102,3 +102,11 @@ form button, .reset {
 
 button:focus-visible, input:focus-visible { outline: 3px solid var(--protein); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .bar span, .tick { transition: none; } }
+
+.pick { position: relative; display: inline-block; }
+.pick::after { content: "▾"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: .8em; color: var(--muted); pointer-events: none; }
+.pick select {
+  appearance: none; -webkit-appearance: none; font: inherit; font-weight: 800; color: var(--ink);
+  background: none; border: 0; padding: 0 22px 0 0; margin: 0; cursor: pointer;
+}
+.pick select:focus-visible { outline: 3px solid var(--protein); outline-offset: 2px; border-radius: 6px; }
