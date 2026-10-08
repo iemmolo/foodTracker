@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17312A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Food">
+<title>Food checklist</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <div class="picker" id="picker" hidden>
+    <h2>Who's tracking?</h2>
+    <div id="people"></div>
+    <p class="err" id="loadErr"></p>
+  </div>
+
+  <div id="app" hidden>
+    <header class="top">
+      <h1 id="title">Today</h1>
+      <button class="switch" id="switch" type="button"></button>
+    </header>
+    <nav class="days" id="days" aria-label="Pick a day"></nav>
+
+    <div class="gauge" id="gauge" aria-live="polite">
+      <div class="gauge-num"><span id="mainNow">0</span> <small id="mainGoal"></small></div>
+      <div class="bar main" role="presentation"><span id="mainBar"></span></div>
+      <div class="gauge-meta"><span id="mainLeft"></span></div>
+      <div class="bar sub" role="presentation"><span id="subBar"></span></div>
+      <div class="gauge-meta"><span><strong id="subNow">0</strong><span id="subUnit"></span></span><span id="subPlan"></span></div>
+    </div>
+
+    <div id="meals"></div>
+
+    <section>
+      <div class="meal-head"><h2>Extras</h2><span>coffee, beer, anything else</span></div>
+      <ul id="extras" hidden></ul>
+      <form id="addForm" autocomplete="off">
+        <input id="exName" placeholder="What" aria-label="What you ate">
+        <input id="exCal" inputmode="numeric" placeholder="Cal" aria-label="Calories">
+        <input id="exPro" inputmode="decimal" placeholder="Protein" aria-label="Protein in grams">
+        <p class="err" id="err"></p>
+        <button type="submit">Add and tick off</button>
+      </form>
+      <button class="reset" id="reset" type="button">Clear this day</button>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

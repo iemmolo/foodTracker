@@ -1,0 +1,56 @@
+{
+  "name": "Chelsea",
+  "calGoal": null,
+  "proGoal": 120,
+  "breakfast": [
+    { "id": "yopro",  "name": "YoPro (160g)", "cal": 94,  "pro": 15.4 },
+    { "id": "banana", "name": "Banana",       "cal": 105, "pro": 1.3 }
+  ],
+  "lunch": [
+    { "id": "bagel",   "name": "Abe's protein bagel",           "cal": 185, "pro": 10.6 },
+    { "id": "chook",   "name": "50g chook breast",              "cal": 83,  "pro": 15.5 },
+    { "id": "lcheese", "name": "Cheese (25g)",                  "cal": 81,  "pro": 7.6 },
+    { "id": "lsalad",  "name": "Sriracha, spinach, red onion",  "cal": 15,  "pro": 1 }
+  ],
+  "snack": [
+    { "id": "bar", "name": "Muscle Nation bar", "cal": 258, "pro": 30.4 }
+  ],
+  "dinners": {
+    "mon": {
+      "name": "Schnitzel bowl",
+      "items": [
+        { "id": "schnitz", "name": "2 chicken schnitzels",  "cal": 464, "pro": 29 },
+        { "id": "rice",    "name": "Rice (half a cup dry)", "cal": 351, "pro": 6.5 },
+        { "id": "dcheese", "name": "Cheese (25g)",          "cal": 81,  "pro": 7.6 },
+        { "id": "dsalad",  "name": "Tomato and cucumber",   "cal": 15,  "pro": 0.5 }
+      ]
+    },
+    "tue": {
+      "name": "Beef bowl",
+      "items": [
+        { "id": "mince",   "name": "150g beef mince + Cholula", "cal": 207, "pro": 31.8 },
+        { "id": "rice",    "name": "Rice (half a cup dry)",     "cal": 351, "pro": 6.5 },
+        { "id": "dcheese", "name": "Cheese (25g)",              "cal": 81,  "pro": 7.6 },
+        { "id": "dsalad",  "name": "Tomato and cucumber",       "cal": 15,  "pro": 0.5 }
+      ]
+    },
+    "wed": {
+      "name": "Schnitzel bowl",
+      "items": [
+        { "id": "schnitz", "name": "2 chicken schnitzels",  "cal": 464, "pro": 29 },
+        { "id": "rice",    "name": "Rice (half a cup dry)", "cal": 351, "pro": 6.5 },
+        { "id": "dcheese", "name": "Cheese (25g)",          "cal": 81,  "pro": 7.6 },
+        { "id": "dsalad",  "name": "Tomato and cucumber",   "cal": 15,  "pro": 0.5 }
+      ]
+    },
+    "thu": {
+      "name": "Beef bowl",
+      "items": [
+        { "id": "mince",   "name": "150g beef mince + Cholula", "cal": 207, "pro": 31.8 },
+        { "id": "rice",    "name": "Rice (half a cup dry)",     "cal": 351, "pro": 6.5 },
+        { "id": "dcheese", "name": "Cheese (25g)",              "cal": 81,  "pro": 7.6 },
+        { "id": "dsalad",  "name": "Tomato and cucumber",       "cal": 15,  "pro": 0.5 }
+      ]
+    }
+  }
+}
