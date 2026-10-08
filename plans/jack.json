@@ -22,7 +22,7 @@
     "mon": {
       "name": "Schnitzel bowl",
       "items": [
-        { "id": "schnitz", "name": "2 chicken schnitzels",  "cal": 464, "pro": 29 },
+        { "id": "schnitz", "name": "1 chicken schnitzel",   "cal": 356, "pro": 22.6 },
         { "id": "rice",    "name": "Rice (half a cup dry)", "cal": 351, "pro": 6.5 },
         { "id": "dcheese", "name": "Cheese (25g)",          "cal": 81,  "pro": 7.6 },
         { "id": "dsalad",  "name": "Tomato and cucumber",   "cal": 15,  "pro": 0.5 },
@@ -42,7 +42,7 @@
     "wed": {
       "name": "Schnitzel bowl",
       "items": [
-        { "id": "schnitz", "name": "2 chicken schnitzels",  "cal": 464, "pro": 29 },
+        { "id": "schnitz", "name": "1 chicken schnitzel",   "cal": 356, "pro": 22.6 },
         { "id": "rice",    "name": "Rice (half a cup dry)", "cal": 351, "pro": 6.5 },
         { "id": "dcheese", "name": "Cheese (25g)",          "cal": 81,  "pro": 7.6 },
         { "id": "dsalad",  "name": "Tomato and cucumber",   "cal": 15,  "pro": 0.5 },
